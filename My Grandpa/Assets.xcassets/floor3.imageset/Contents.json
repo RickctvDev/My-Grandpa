@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Spaceship.png"
+      "filename" : "floor3.jpg",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
