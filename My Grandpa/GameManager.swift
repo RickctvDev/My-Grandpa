@@ -9,12 +9,22 @@
 import Foundation
 import SpriteKit
 
+//DEV CONFIG
 let debugMode = true
 let gameFont = "IndieFlower"
 let gameTitleName = "My Grandpa"
+var userConnectedWithLoginCredentials = false
 
+//GAME SETTINGS
+let timeSunRise = 7
+let timeSunSet = 20
+let grandpaSleepTime = 22
+let nightColor = SKColor.black
+let nightBlendValue : CGFloat = 0.15
+let nightTimeColorBG = UIColor(red: 25 / 255, green: 74 / 255, blue: 109 / 255, alpha: 1)
+let dayTimeColorBG = UIColor(red: 51 / 255, green: 204 / 255, blue: 255 / 255, alpha: 1)
 
-
+//USEFUL FUNCTIONS
 //Make of size: UIScreen.main.bounds.size
 func prepareForNewScene(sceneToPresent : SKScene, currentScene : SKScene){
     

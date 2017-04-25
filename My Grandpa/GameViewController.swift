@@ -18,8 +18,8 @@ class GameViewController: UIViewController {
         if let view = self.view as! SKView? {
             
             //PUT SCENE YOU WANT TO DEBUG HERE
-            let scene : LoadingScreen!
-            scene = LoadingScreen(size: UIScreen.main.bounds.size)
+            let scene : LivingRoomScene!
+            scene = LivingRoomScene(size: UIScreen.main.bounds.size)
             //scene.scaleMode = .aspectFit
             scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             
