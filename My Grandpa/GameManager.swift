@@ -1,5 +1,5 @@
 //
-//  MoveToScene.swift
+//  GAME MANAGER
 //  My Grandpa
 //
 //  Created by Rick Crane on 25/04/2017.
@@ -13,27 +13,100 @@ import SpriteKit
 let debugMode = true
 let gameFont = "IndieFlower"
 let gameTitleName = "My Grandpa"
-var userConnectedWithLoginCredentials = false
+var userConnectedWithLoginCredentials = false // DEFAULT: false
+var userHasSavedGameFile = false // DEFAULT: false
+
+//GRANDPAS RACES
+let grandpaRaces = ["White", "Black", "Asian", "Brown", "Latino"]
 
 //GAME SETTINGS
-let timeSunRise = 7
-let timeSunSet = 20
-let grandpaSleepTime = 22
+let defaultSoundVolume : Float = 0.1
+let timeSunRise = 7 // DEFAULT: 7
+let timeSunSet = 20 // DEFAULT: 20
+let grandpaSleepTime = 22 // DEFAULT: 22
 let nightColor = SKColor.black
-let nightBlendValue : CGFloat = 0.15
+let nightBlendValue : CGFloat = 0.15 // DEFAULT: 0.15
 let nightTimeColorBG = UIColor(red: 25 / 255, green: 74 / 255, blue: 109 / 255, alpha: 1)
 let dayTimeColorBG = UIColor(red: 51 / 255, green: 204 / 255, blue: 255 / 255, alpha: 1)
+var itIsDayTime = true
+var grandpaIsSleeping = false
+var shouldResetNow = false //is used when the game goes into BG
+var soundIsOn = true
+var otherSoundIsOn = true
+var notificationsSwitchedOn = true
+var loadedTextField = false
 
-//USEFUL FUNCTIONS
+//Game Sprite Names -> Used for testing touches
+let houseName = "house"
+let groundName = "ground"
+let sunName = "sun"
+let settingsButtonName = "settingsMenuButton"
+let shopButtonName = "shopMenuButton"
+let statsButtonName = "statsMenuButton"
+let creditsButtonName = "creditsMenuButton"
+let moonName = "moon"
+let starName = "star"
+let cloudName = "cloud"
+let createNewGrandpaButtonName = "createGrandpa"
+let continueGameButtonName = "continueGame"
+let debugButtonName = "debugMode"
+let grandpaName = "grandpa"
+let fenceName = "FenceLoading"
+let billboardName = "BillBoard"
+let retryButtonName = "retry"
+let mainMenuName = "MainMenu"
+let closeButtonName = "closeButton"
+let musicButtonName = "musicButton"
+let soundButtonName = "soundButton"
+let notificationButtonName = "NotificationsButton"
+let cameraName = "camera"
+let raceNameLabelThatWillBeRemovedWithImagesLater = "raceLabel"
+
+//USEFUL FUNCTIONS AND VARIBLES
+var _menuButtonsArray = [MenuButton]()
+
 //Make of size: UIScreen.main.bounds.size
-func prepareForNewScene(sceneToPresent : SKScene, currentScene : SKScene){
+func prepareForNewScene(sceneToPresent : SKScene, currentScene : SKScene, fadeWithDuration : TimeInterval){
     
     currentScene.removeAllActions()
     currentScene.removeAllChildren()
     currentScene.removeFromParent()
     
+    if let searchSceneForTextField = currentScene.view?.viewWithTag(999){
+        searchSceneForTextField.removeFromSuperview()
+    }
+    
     sceneToPresent.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-    let reveal = SKTransition.fade(withDuration: 1)
+    let reveal = SKTransition.fade(withDuration: fadeWithDuration)
     currentScene.view?.presentScene(sceneToPresent, transition: reveal)
+}
+
+func randomPointsBetweenWithFloat(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
+    return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+}
+
+func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
+    return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+}
+
+func randomBetweenNumbersDouble(firstNum: Double, secondNum: Double) -> Double{
+    return Double(arc4random()) / Double(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+}
+
+func dayOrNightChecker(){
+    let date = Date()
+    let calendar = Calendar.current
+    let hour = Int(calendar.component(.hour, from: date))
+    
+    //It is day time
+    if hour > timeSunRise && hour < timeSunSet {
+        itIsDayTime = true
+        grandpaIsSleeping = false
+    }else{
+        itIsDayTime = false
+        if hour >= grandpaSleepTime || hour >= 0 && hour <= timeSunRise {
+            grandpaIsSleeping = true
+        }
+    }
 }
 

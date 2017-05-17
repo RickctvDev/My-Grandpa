@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7307E15B1EC4D28A00A2F90D /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15A1EC4D28A00A2F90D /* Billboard.swift */; };
+		7307E15D1EC4E5E400A2F90D /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15C1EC4E5E400A2F90D /* Credits.swift */; };
 		730BB2F01EAFFFE000F36A31 /* LivingRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2EF1EAFFFE000F36A31 /* LivingRoom.swift */; };
 		730BB2F21EB0004B00F36A31 /* LivingRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2F11EB0004B00F36A31 /* LivingRoomScene.swift */; };
 		730BB2F41EB00ABB00F36A31 /* AudioMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2F31EB00ABB00F36A31 /* AudioMaker.swift */; };
@@ -62,9 +64,26 @@
 		7321AB501EAFE61400CD8BA1 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7321AB4F1EAFE61400CD8BA1 /* GameManager.swift */; };
 		7321AB521EAFE7B400CD8BA1 /* SpriteCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7321AB511EAFE7B400CD8BA1 /* SpriteCreator.swift */; };
 		7321AB541EAFEB1D00CD8BA1 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7321AB531EAFEB1D00CD8BA1 /* MainMenu.swift */; };
+		7326FA061EB7A08100303575 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7326FA051EB7A08000303575 /* Cloud.swift */; };
+		7326FA081EB7A8EE00303575 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7326FA071EB7A8EE00303575 /* Updatable.swift */; };
+		7326FA0B1EB7B86B00303575 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7326FA0A1EB7B86B00303575 /* Sun.swift */; };
+		7326FA0D1EB7BA7A00303575 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7326FA0C1EB7BA7A00303575 /* House.swift */; };
+		7326FA0F1EB7C0E800303575 /* Moon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7326FA0E1EB7C0E800303575 /* Moon.swift */; };
+		7326FA111EB7C22600303575 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7326FA101EB7C22600303575 /* Star.swift */; };
+		7377A1131EC8DFBB00A74EF5 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7377A1121EC8DFBB00A74EF5 /* TextField.swift */; };
+		7385FE341EB7C4DB00CDA942 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385FE331EB7C4DB00CDA942 /* Ground.swift */; };
+		7385FE361EB7CD4700CDA942 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385FE351EB7CD4700CDA942 /* Arrow.swift */; };
+		7385FE381EB7D86400CDA942 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385FE371EB7D86400CDA942 /* MenuButton.swift */; };
+		7385FE3A1EB7EA0A00CDA942 /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385FE391EB7EA0A00CDA942 /* StartButton.swift */; };
+		7385FE3C1EB7EF4F00CDA942 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385FE3B1EB7EF4F00CDA942 /* Camera.swift */; };
+		7385FE3E1EB7F4A400CDA942 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385FE3D1EB7F4A400CDA942 /* DebugMenu.swift */; };
+		73B7EC831EC38726006832D8 /* Grandpa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7EC821EC38726006832D8 /* Grandpa.swift */; };
+		73FA55B51ECCBE32005368CE /* CreateNewCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7307E15A1EC4D28A00A2F90D /* Billboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
+		7307E15C1EC4E5E400A2F90D /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		730BB2EF1EAFFFE000F36A31 /* LivingRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingRoom.swift; sourceTree = "<group>"; };
 		730BB2F11EB0004B00F36A31 /* LivingRoomScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingRoomScene.swift; sourceTree = "<group>"; };
 		730BB2F31EB00ABB00F36A31 /* AudioMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioMaker.swift; sourceTree = "<group>"; };
@@ -122,6 +141,21 @@
 		7321AB4F1EAFE61400CD8BA1 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		7321AB511EAFE7B400CD8BA1 /* SpriteCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteCreator.swift; sourceTree = "<group>"; };
 		7321AB531EAFEB1D00CD8BA1 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		7326FA051EB7A08000303575 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
+		7326FA071EB7A8EE00303575 /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		7326FA0A1EB7B86B00303575 /* Sun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
+		7326FA0C1EB7BA7A00303575 /* House.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
+		7326FA0E1EB7C0E800303575 /* Moon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moon.swift; sourceTree = "<group>"; };
+		7326FA101EB7C22600303575 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		7377A1121EC8DFBB00A74EF5 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		7385FE331EB7C4DB00CDA942 /* Ground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
+		7385FE351EB7CD4700CDA942 /* Arrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
+		7385FE371EB7D86400CDA942 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		7385FE391EB7EA0A00CDA942 /* StartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		7385FE3B1EB7EF4F00CDA942 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		7385FE3D1EB7F4A400CDA942 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
+		73B7EC821EC38726006832D8 /* Grandpa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grandpa.swift; sourceTree = "<group>"; };
+		73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewCharacter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +212,8 @@
 		7321AAD71EAFC2E100CD8BA1 /* My Grandpa */ = {
 			isa = PBXGroup;
 			children = (
+				7385FE3F1EB7F4AD00CDA942 /* QA Tools */,
+				7326FA091EB7AA5300303575 /* Protocols */,
 				7321AB551EAFF6AC00CD8BA1 /* GameManager */,
 				7321AAF01EAFC2FD00CD8BA1 /* ViewController */,
 				7321AAF51EAFC36E00CD8BA1 /* App Delegate */,
@@ -222,6 +258,21 @@
 		7321AAF41EAFC35C00CD8BA1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */,
+				7377A1121EC8DFBB00A74EF5 /* TextField.swift */,
+				7307E15C1EC4E5E400A2F90D /* Credits.swift */,
+				7385FE3B1EB7EF4F00CDA942 /* Camera.swift */,
+				7307E15A1EC4D28A00A2F90D /* Billboard.swift */,
+				7385FE391EB7EA0A00CDA942 /* StartButton.swift */,
+				73B7EC821EC38726006832D8 /* Grandpa.swift */,
+				7385FE331EB7C4DB00CDA942 /* Ground.swift */,
+				7326FA0E1EB7C0E800303575 /* Moon.swift */,
+				7326FA101EB7C22600303575 /* Star.swift */,
+				7326FA0C1EB7BA7A00303575 /* House.swift */,
+				7385FE351EB7CD4700CDA942 /* Arrow.swift */,
+				7326FA051EB7A08000303575 /* Cloud.swift */,
+				7326FA0A1EB7B86B00303575 /* Sun.swift */,
+				7385FE371EB7D86400CDA942 /* MenuButton.swift */,
 				730BB2F71EB00D3200F36A31 /* Creation Classes */,
 				730BB2F61EB00D1500F36A31 /* Room Layouts */,
 				730BB2F51EB00D0600F36A31 /* Audio */,
@@ -342,6 +393,22 @@
 			name = GameManager;
 			sourceTree = "<group>";
 		};
+		7326FA091EB7AA5300303575 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7326FA071EB7A8EE00303575 /* Updatable.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		7385FE3F1EB7F4AD00CDA942 /* QA Tools */ = {
+			isa = PBXGroup;
+			children = (
+				7385FE3D1EB7F4A400CDA942 /* DebugMenu.swift */,
+			);
+			name = "QA Tools";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,16 +523,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7385FE3C1EB7EF4F00CDA942 /* Camera.swift in Sources */,
 				730BB2F21EB0004B00F36A31 /* LivingRoomScene.swift in Sources */,
+				7385FE361EB7CD4700CDA942 /* Arrow.swift in Sources */,
+				7326FA061EB7A08100303575 /* Cloud.swift in Sources */,
+				7307E15B1EC4D28A00A2F90D /* Billboard.swift in Sources */,
+				7326FA0B1EB7B86B00303575 /* Sun.swift in Sources */,
 				7321AADF1EAFC2E100CD8BA1 /* LoadingScreen.swift in Sources */,
 				7321AB521EAFE7B400CD8BA1 /* SpriteCreator.swift in Sources */,
+				7385FE3A1EB7EA0A00CDA942 /* StartButton.swift in Sources */,
+				7326FA111EB7C22600303575 /* Star.swift in Sources */,
+				7385FE3E1EB7F4A400CDA942 /* DebugMenu.swift in Sources */,
+				7385FE341EB7C4DB00CDA942 /* Ground.swift in Sources */,
 				730BB2F41EB00ABB00F36A31 /* AudioMaker.swift in Sources */,
 				7321AAE11EAFC2E100CD8BA1 /* GameViewController.swift in Sources */,
+				73FA55B51ECCBE32005368CE /* CreateNewCharacter.swift in Sources */,
 				7321AB541EAFEB1D00CD8BA1 /* MainMenu.swift in Sources */,
+				7377A1131EC8DFBB00A74EF5 /* TextField.swift in Sources */,
 				730BB2F01EAFFFE000F36A31 /* LivingRoom.swift in Sources */,
+				7307E15D1EC4E5E400A2F90D /* Credits.swift in Sources */,
+				7385FE381EB7D86400CDA942 /* MenuButton.swift in Sources */,
+				7326FA081EB7A8EE00303575 /* Updatable.swift in Sources */,
 				7321AB4E1EAFD39E00CD8BA1 /* WifiConnectionChecker.swift in Sources */,
 				7321AAD91EAFC2E100CD8BA1 /* AppDelegate.swift in Sources */,
 				7321AB501EAFE61400CD8BA1 /* GameManager.swift in Sources */,
+				7326FA0D1EB7BA7A00303575 /* House.swift in Sources */,
+				73B7EC831EC38726006832D8 /* Grandpa.swift in Sources */,
+				7326FA0F1EB7C0E800303575 /* Moon.swift in Sources */,
 				7321AB4B1EAFD33D00CD8BA1 /* WifiSystemsConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

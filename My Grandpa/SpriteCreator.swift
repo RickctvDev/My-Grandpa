@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class SpriteCreator: SKSpriteNode {
-    init(scene : SKScene, texture : String, zPosition : CGFloat, anchorPoints : CGPoint?) {
+    init(scene : SKScene, texture : String, zPosition : CGFloat, anchorPoints : CGPoint?, name : String?) {
         let textureToMake = SKTexture(imageNamed: texture)
         
         super.init(texture: textureToMake , color: UIColor.clear, size: textureToMake.size())
@@ -21,8 +21,34 @@ class SpriteCreator: SKSpriteNode {
             self.anchorPoint = anchorPoints!
         }
         self.zPosition = zPosition
-        self.name = texture
         
+        if name == nil {
+            self.name = texture
+        }else{
+            self.name = name
+        }
+    }
+    
+    init(scene : SKScene, texture : String, zPosition : CGFloat, anchorPoints : CGPoint?, name : String?, downFromSpriteNamed : String?){
+        let textureToMake = SKTexture(imageNamed: texture)
+        let firstSpriteStartPos : CGFloat = 40
+        let spaceBelowOtherSprites : CGFloat = 25
+        
+        super.init(texture: textureToMake , color: UIColor.clear, size: textureToMake.size())
+        self.xScale = 0.3
+        self.yScale = self.xScale
+        self.zPosition = 11
+        self.name = name
+        
+        if downFromSpriteNamed == nil {
+            self.position = CGPoint(
+                x: scene.frame.maxX + self.frame.size.width,
+                y: scene.frame.midY + firstSpriteStartPos)
+        }else{
+            self.position = CGPoint(
+                x: scene.frame.maxX + self.frame.size.width,
+                y: ((scene.childNode(withName: downFromSpriteNamed!)?.frame.minY)! - spaceBelowOtherSprites))
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

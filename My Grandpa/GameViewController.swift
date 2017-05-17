@@ -12,24 +12,32 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
-    override func viewDidLayoutSubviews() {
-        debugChecker()
-        
-        if let view = self.view as! SKView? {
-            
-            //PUT SCENE YOU WANT TO DEBUG HERE
-            let scene : LivingRoomScene!
-            scene = LivingRoomScene(size: UIScreen.main.bounds.size)
-            //scene.scaleMode = .aspectFit
-            scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            
-            // Present the scene
-            view.presentScene(scene)
+    private var loaded : Bool = false
     
-            view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-            //view.showsPhysics = true
+    override func viewDidLayoutSubviews() {
+        
+        if loaded == false {
+           
+            debugChecker()
+            
+            if let view = self.view as! SKView? {
+                
+                //PUT SCENE YOU WANT TO DEBUG HERE
+                let scene : LoadingScreen!
+                scene = LoadingScreen(size: UIScreen.main.bounds.size)
+                //scene.scaleMode = .aspectFit
+                scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                
+                // Present the scene
+                view.presentScene(scene)
+                
+                view.ignoresSiblingOrder = true
+                view.showsFPS = true
+                view.showsNodeCount = true
+                //view.showsPhysics = true
+                
+                loaded = true
+            }
         }
     }
 
@@ -59,6 +67,16 @@ class GameViewController: UIViewController {
     }
     
     func debugChecker(){
-        print("********************DEBUG MODE IS SET TO TRUE -> SET TO FALSE BEFORE SUBMITTING THE APP*****************")
+        if debugMode == true {
+            print("")
+            print("************** DEBUG MODE IS SET TO TRUE *******************")
+            print("******** SET TO FALSE BEFORE SUBMITTING THE APP ********")
+            print("")
+        }else {
+            print("")
+            print("************** DEBUG MODE IS SET TO FALSE *******************")
+            print("************* OK FOR SUBMITTING THE APP ***********")
+            print("")
+        }
     }
 }
