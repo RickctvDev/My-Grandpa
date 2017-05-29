@@ -11,13 +11,17 @@ import GameplayKit
 import AVFoundation
 import UIKit
 
-class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
+class MainMenu: SKScene, UITextFieldDelegate {
     
     //SET UP VARIALES
     private var updatables  = [Updatable]()
-    private let audioPlayer = AudioMaker()
-    private var cam : Camera!
-    private var textInput : TextField!
+    private var audioPlayer = AudioMaker()
+    private var cam         : Camera!
+    private var textInput   : TextField!
+    private var debugMode   : DebugMenu!
+    
+    //NEED THIS TO REMOVE FROM APPDELEGATE
+    var viewController: GameViewController!
     
     //NEEDED ACCESS VARIABLES
     private var grandpa         : Grandpa!
@@ -26,9 +30,9 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
     private var house           : House!
     private var billBoard       : Billboard!
     private var ground          : Ground!
+    private var creationStage   : CreateNewGrandpa!
     
     override func didMove(to view: SKView) {
-    
         let _ : WifiConnectionChecker = WifiConnectionChecker(onScene: self)
         audioPlayer.playBGMusic()
         createMainMenu()
@@ -74,8 +78,8 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
     
     //THIS IS BECOMING AN ISSUE
     func makeTextField(){
-        self.textInput = TextField(frame: CGRect(x: UIScreen.main.bounds.size.width / 2,
-                                y: UIScreen.main.bounds.size.height / 2,
+        self.textInput = TextField(frame: CGRect(x: UIScreen.main.bounds.size.width / 2 + 95,
+                                y: UIScreen.main.bounds.size.height / 2 - 70,
                                 width: 150,
                                 height: 30))
         self.textInput.delegate = self
@@ -89,14 +93,6 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
             textInput.resignFirstResponder()
             
         }else{
-            // Populates the SKLabelNode
-            //WE WILL NEED TO ADD SOMETHING HERE****************************************
-            /*
-                    customizeNewGrandpaLabel.text = textField.text?.capitalized
-                    USERS_DATA.set(textField.text?.capitalized, forKey: "nameChosen")
-             */
- 
-            // Hides the keyboard
             textInput.resignFirstResponder()
             return true
         }
@@ -203,7 +199,7 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             let node     = atPoint(location)
-        
+                    
             //If a menu button was selected
             for button in _menuButtonsArray{
                 if node.name == button.name!{
@@ -217,8 +213,6 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
             if node.name == createNewGrandpaButtonName || node.name == continueGameButtonName {
                 //Start Button has been pressed
                 startButtonTouched(nodePressed: node)
-                
-                return
             }else if node.name == grandpaName {
                 //Make hurt sound
                 grandpa.playPainVoice()
@@ -238,11 +232,33 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
             }else if node.name == soundButtonName{
                 audioPlayer.playButtonClickSound(scene: self, atVolume: defaultSoundVolume)
                 billBoard.turnOnOffButtonSounds()
+            }else if node.name == confirmButtonName{
+                audioPlayer.playButtonClickSound(scene: self, atVolume: defaultSoundVolume)
+                creationStage.confirmButtonPressed()
+                if userHasSavedGameFile  == true{
+                    audioPlayer.bgMusicFadeOut(withSeconds: 1)
+                    grandpa.userCompletedTutorial()
+                }
+            }else if node.name == upArrow1Name
+                || node.name == upArrow2Name
+                || node.name == downArrow1Name
+                || node.name == downArrow2Name
+                || node.name == rightArrowName
+                || node.name == leftArrowName
+            {
+                audioPlayer.playButtonClickSound(scene: self, atVolume: defaultSoundVolume)
+                creationStage.arrowWasPressed(node: node)
+            }else if node.name == crossButtonName {
+                creationStage.resetStages()
+            }else if node.name == debugButtonName {
+                debugMode.showOrRemoveUserSaveData()
+            }else if node.name == resetUserDataButtonName {
+                let userData = UsersData()
+                userData.removeAllUserData()
             }
         }
     }
     
-    //ADD THE CREATION STAGE SECTION HERE UNDER THE CREATENEWGRANDPA SECTION
     func startButtonTouched(nodePressed: SKNode){
         audioPlayer.playButtonClickSound(scene: self, atVolume: defaultSoundVolume)
         
@@ -255,19 +271,20 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
         }
         
         if nodePressed.name == continueGameButtonName {
+            audioPlayer.bgMusicFadeOut(withSeconds: 2)
             
-            let waitTimer = SKAction.wait(forDuration: 3)
+            let waitTimer = SKAction.wait(forDuration: 3.7)
             grandpa.continueButtonPressed()
             house.openAndCloseHouse(waitForDuration: 1.8)
             self.run(waitTimer) {
                 let sceneToGoTo = LivingRoomScene(size: UIScreen.main.bounds.size)
-                prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5)
+                prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5, audioPlayer: nil)
             }
         }else if nodePressed.name == createNewGrandpaButtonName {
             house.openAndCloseHouse(waitForDuration: 0.3)
             grandpa.createButtonPressed(toPos: CGPoint(x: house.frame.maxX + 75, y: grandpa.position.y), timeToMove: 1)
-            let creationStage = CreateNewGrandpa(onScene: self)
-            creationStage.startStage1()
+            creationStage = CreateNewGrandpa(onScene: self, textFieldToPass: textInput, camera: cam)
+            creationStage.startStage1(withTime: 2)
         }
     }
     
@@ -280,17 +297,17 @@ class MainMenu: SKScene, AVAudioPlayerDelegate, UITextFieldDelegate {
     
     //DEBUG MODE CHECKER
     func testDebugMode(){
-        let debugMode = DebugMenu(scene: self, texture: "wallpaper3", zPosition: 1999, anchorPoints: nil, name: debugButtonName)
-        debugMode.alpha = 1
+        debugMode = DebugMenu(scene: self, texture: "wallpaper3", zPosition: 1999, anchorPoints: nil, name: debugButtonName)
+        debugMode.alpha = 1 
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        
+    override func update(_ currentTime: TimeInterval) {        
         updatables.forEach { $0.update(currentTime: currentTime) }
         if shouldResetNow == true {
             shouldResetNow  = false
             let sceneToGoTo = LoadingScreen(size: UIScreen.main.bounds.size)
-            prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5)
+            prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5, audioPlayer: audioPlayer)
+            
         }
     }
 }

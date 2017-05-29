@@ -16,6 +16,13 @@ let gameTitleName = "My Grandpa"
 var userConnectedWithLoginCredentials = false // DEFAULT: false
 var userHasSavedGameFile = false // DEFAULT: false
 
+//USER DATA SAVE NAMES
+let nameChosen = "nameChosen"
+let dateOfBirthDay = "dateOfBirthDay"
+let dateOfBirthMonth = "dateOfBirthMonth"
+let racePicked = "racePicked"
+let userHasCompletedTutorial = "completedTutorial?"
+
 //GRANDPAS RACES
 let grandpaRaces = ["White", "Black", "Asian", "Brown", "Latino"]
 
@@ -61,12 +68,32 @@ let soundButtonName = "soundButton"
 let notificationButtonName = "NotificationsButton"
 let cameraName = "camera"
 let raceNameLabelThatWillBeRemovedWithImagesLater = "raceLabel"
+let confirmButtonName = "confirmButton"
+let calendarImageName = "calendar"
+let rightArrowTextureName = "arrow"
+let leftArrowTextureName = "arrowLeft"
+let rightArrowName = "rightArrow"
+let leftArrowName = "leftArrow"
+let upArrowName = "upArrow"
+let downArrowName = "downArrow"
+let upArrow1Name = "upArrow1"
+let upArrow2Name = "upArrow2"
+let downArrow1Name = "downArrow1"
+let downArrow2Name = "downArrow2"
+let dayCalenderLabelName = "dayCalLabel"
+let monthCalenderLabelName = "monthCalLabel"
+let crossButtonName = "cross"
+let resetUserDataButtonName = "resetUserDataButton"
 
 //USEFUL FUNCTIONS AND VARIBLES
 var _menuButtonsArray = [MenuButton]()
 
 //Make of size: UIScreen.main.bounds.size
-func prepareForNewScene(sceneToPresent : SKScene, currentScene : SKScene, fadeWithDuration : TimeInterval){
+func prepareForNewScene(sceneToPresent : SKScene, currentScene : SKScene, fadeWithDuration : TimeInterval, audioPlayer : AudioMaker?){
+    
+    if audioPlayer != nil {
+        audioPlayer?.bgMusicFadeOut(withSeconds: fadeWithDuration - 0.8)
+    }
     
     currentScene.removeAllActions()
     currentScene.removeAllChildren()

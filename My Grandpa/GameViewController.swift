@@ -16,6 +16,15 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
+        //this is where we know if a user has saved data, seems to load up on every scene though
+        if UserDefaults.standard.bool(forKey: userHasCompletedTutorial) == true {
+            userHasSavedGameFile = true
+            print("Has Saved Info")
+        }else{
+            print("User has nothing saved")
+            userHasSavedGameFile = false
+        }
+        
         if loaded == false {
            
             debugChecker()
@@ -27,6 +36,7 @@ class GameViewController: UIViewController {
                 scene = LoadingScreen(size: UIScreen.main.bounds.size)
                 //scene.scaleMode = .aspectFit
                 scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                scene.viewController = self
                 
                 // Present the scene
                 view.presentScene(scene)

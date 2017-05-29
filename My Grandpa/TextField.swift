@@ -23,6 +23,7 @@ class TextField: UITextField {
         self.attributedPlaceholder = NSAttributedString(string: "Ex. Cedric", attributes: [NSForegroundColorAttributeName : UIColor.gray])
         self.autocapitalizationType = UITextAutocapitalizationType.words
         self.returnKeyType = UIReturnKeyType.done
+        self.autocorrectionType = UITextAutocorrectionType.no
         
         self.isHidden = true
     }

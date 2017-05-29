@@ -31,7 +31,7 @@ class AudioMaker{
             catch{
                 print(error)
             }
-            
+                
         }else{
             print("Sound is set to false")
         }

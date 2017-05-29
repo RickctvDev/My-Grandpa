@@ -16,7 +16,7 @@ class House : SpriteCreator {
     private let _zPosition : CGFloat!
     private let _anchorPoint : CGPoint!
     private let _name : String?
-    private let audioSource = AudioMaker()
+    private var audioSource = AudioMaker()
     
     private let houseXScale : CGFloat = 0.2
     

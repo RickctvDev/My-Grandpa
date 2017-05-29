@@ -12,10 +12,11 @@ import SpriteKit
 class Grandpa : SpriteCreator{
     
     private let _scene : SKScene!
-    private let _texture : String!
+    private var _texture : String!
     private let _zPosition : CGFloat!
     private let _anchorPoint = CGPoint(x: 0.5, y: 0)
     private let _name : String?
+    private let usersData = UsersData()
     
     override init(scene: SKScene, texture: String, zPosition: CGFloat, anchorPoints: CGPoint?, name: String?) {
         
@@ -35,15 +36,13 @@ class Grandpa : SpriteCreator{
             //check to see if they have saved data
             if userHasSavedGameFile == true{
                 //should load his grandpa here that user has created
-                
-                
-                //this needs to be implemented 
+                //This is not correct right now, we need to GRAB THE ACTUAL GRANDPA SELECTED WHEN THIS HAPPENS
+                //_texture = usersData.getDataFromKey(Key: racePicked) as! String
                 
                 
                 //check if grandpa is sleeping
-                if grandpaIsSleeping == false{
+                if grandpaIsSleeping == false {
                     //position him outside the house
-                    
                     grandpaNextToHouse(scene: scene)
                 }else{
                     //grandpa should be hidden to sleep
@@ -98,6 +97,23 @@ class Grandpa : SpriteCreator{
         self.run(playSound)
         
         makeGranpaShake()
+    }
+    
+    func userCompletedTutorial(){
+        let foundHouse = _scene.childNode(withName: houseName) as! House
+        foundHouse.openAndCloseHouse(waitForDuration: 1.6)
+        continueButtonPressed()
+        
+        let toPos = CGPoint(x: _scene.frame.midX, y: _scene.frame.midY)
+        let cameraFound = _scene.childNode(withName: cameraName) as! Camera
+        cameraFound.moveToPos(position: toPos, withTime: 0.7, withZoom: 1)
+        
+        let wait = SKAction.wait(forDuration: 2.5)
+        self.run(wait, completion: {
+            let sceneToPresent = LivingRoomScene(size: UIScreen.main.bounds.size)
+            
+            prepareForNewScene(sceneToPresent: sceneToPresent, currentScene: self._scene, fadeWithDuration: 2.5, audioPlayer: nil)
+        })
     }
     
     func createButtonPressed(toPos : CGPoint, timeToMove : Double){

@@ -15,6 +15,9 @@ class LoadingScreen: SKScene {
     private var loadingText : SKLabelNode! = nil
     private var warning : SpriteCreator! = nil
     
+    //NEED THIS TO REMOVE FROM APPDELEGATE
+    var viewController: GameViewController!
+    
     override func didMove(to view: SKView) {
         self.backgroundColor = UIColor(red: 51 / 255, green: 204 / 255, blue: 255 / 255, alpha: 1)
         makeLoadingScreen()
@@ -117,7 +120,7 @@ class LoadingScreen: SKScene {
             self.run(waitForSec) {
                 if self.currentReachabilityStatus != .notReachable {
                     let sceneToPresent = MainMenu(size: UIScreen.main.bounds.size)
-                    prepareForNewScene(sceneToPresent: sceneToPresent, currentScene: self, fadeWithDuration: 1)
+                    prepareForNewScene(sceneToPresent: sceneToPresent, currentScene: self, fadeWithDuration: 1, audioPlayer: nil)
                 }else{
                     //They have no internet connection
                     self.connectionTimeOut = true
@@ -134,7 +137,7 @@ class LoadingScreen: SKScene {
             let waitForSec = SKAction.wait(forDuration: 3)
             self.run(waitForSec) {
                 let sceneToPresent = MainMenu(size: UIScreen.main.bounds.size)
-                prepareForNewScene(sceneToPresent: sceneToPresent, currentScene: self, fadeWithDuration: 1)
+                prepareForNewScene(sceneToPresent: sceneToPresent, currentScene: self, fadeWithDuration: 1, audioPlayer: nil)
             }
         }
     }

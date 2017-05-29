@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7307E15B1EC4D28A00A2F90D /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15A1EC4D28A00A2F90D /* Billboard.swift */; };
 		7307E15D1EC4E5E400A2F90D /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15C1EC4E5E400A2F90D /* Credits.swift */; };
+		7309193A1ED3502C00807125 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730919391ED3502C00807125 /* UserData.swift */; };
 		730BB2F01EAFFFE000F36A31 /* LivingRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2EF1EAFFFE000F36A31 /* LivingRoom.swift */; };
 		730BB2F21EB0004B00F36A31 /* LivingRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2F11EB0004B00F36A31 /* LivingRoomScene.swift */; };
 		730BB2F41EB00ABB00F36A31 /* AudioMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2F31EB00ABB00F36A31 /* AudioMaker.swift */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		7307E15A1EC4D28A00A2F90D /* Billboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
 		7307E15C1EC4E5E400A2F90D /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		730919391ED3502C00807125 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		730BB2EF1EAFFFE000F36A31 /* LivingRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingRoom.swift; sourceTree = "<group>"; };
 		730BB2F11EB0004B00F36A31 /* LivingRoomScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingRoomScene.swift; sourceTree = "<group>"; };
 		730BB2F31EB00ABB00F36A31 /* AudioMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioMaker.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		7321AAF41EAFC35C00CD8BA1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				730919391ED3502C00807125 /* UserData.swift */,
 				73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */,
 				7377A1121EC8DFBB00A74EF5 /* TextField.swift */,
 				7307E15C1EC4E5E400A2F90D /* Credits.swift */,
@@ -545,6 +548,7 @@
 				7385FE381EB7D86400CDA942 /* MenuButton.swift in Sources */,
 				7326FA081EB7A8EE00303575 /* Updatable.swift in Sources */,
 				7321AB4E1EAFD39E00CD8BA1 /* WifiConnectionChecker.swift in Sources */,
+				7309193A1ED3502C00807125 /* UserData.swift in Sources */,
 				7321AAD91EAFC2E100CD8BA1 /* AppDelegate.swift in Sources */,
 				7321AB501EAFE61400CD8BA1 /* GameManager.swift in Sources */,
 				7326FA0D1EB7BA7A00303575 /* House.swift in Sources */,

@@ -15,7 +15,8 @@ class DebugMenu : SpriteCreator {
     private let _zPosition : CGFloat!
     private let _anchorPoint : CGPoint!
     private let _name : String?
-    
+    private var _isDisplayingData = false
+    private var board : SKSpriteNode!
     
     override init(scene: SKScene, texture: String?, zPosition: CGFloat, anchorPoints: CGPoint?, name: String?) {
         
@@ -47,6 +48,74 @@ class DebugMenu : SpriteCreator {
             
             _scene.addChild(self)
             self.addChild(label)
+        }
+    }
+    
+    func showOrRemoveUserSaveData(){
+        
+        if _isDisplayingData == false {
+            let userData = UsersData()
+            
+            board = SKSpriteNode(color: UIColor.blue, size: CGSize(width: 400, height: 300))
+            board.zPosition = 99999
+            
+            var nameLabel = SKLabelNode()
+            var dateOfBirthLabel = SKLabelNode()
+            var racePickedLabel = SKLabelNode()
+            var completedTutLabel = SKLabelNode()
+            
+            if let _nameChosen = userData.getDataFromKey(Key: nameChosen) as? String {
+                nameLabel = SKLabelNode(text: "Name Chosen ->  \(_nameChosen)")
+            }else {
+                nameLabel = SKLabelNode(text: "No Data To Display")
+            }
+            
+            if let _dayChosen = userData.getDataFromKey(Key: dateOfBirthDay) as? String {
+                if let _monthChosen = userData.getDataFromKey(Key: dateOfBirthMonth) as? String {
+                    dateOfBirthLabel = SKLabelNode(text: "DOB ->  \(_dayChosen) / \(_monthChosen)")
+                }
+            }else {
+                dateOfBirthLabel = SKLabelNode(text: "No Data To Display")
+            }
+            
+            if let _raceChosen = userData.getDataFromKey(Key: racePicked) as? String {
+                racePickedLabel = SKLabelNode(text: "Race:  \(_raceChosen)")
+            }else {
+                racePickedLabel = SKLabelNode(text: "No Data To Display")
+            }
+            
+            if let _tutCompleted = userData.getDataFromKey(Key: userHasCompletedTutorial) as? Bool {
+                completedTutLabel = SKLabelNode(text: "Completed Tutorial ->  \(_tutCompleted)")
+            }else {
+                completedTutLabel = SKLabelNode(text: "No Data To Display")
+            }
+            
+            nameLabel.fontSize = 25
+            dateOfBirthLabel.fontSize = nameLabel.fontSize
+            racePickedLabel.fontSize = nameLabel.fontSize
+            completedTutLabel.fontSize = nameLabel.fontSize
+            
+            nameLabel.position = CGPoint(x: board.frame.midX, y: board.frame.midX)
+            dateOfBirthLabel.position = CGPoint(x: nameLabel.position.x, y: nameLabel.frame.minY - dateOfBirthLabel.frame.size.height)
+            racePickedLabel.position = CGPoint(x: dateOfBirthLabel.position.x, y: dateOfBirthLabel.frame.minY - racePickedLabel.frame.size.height)
+            completedTutLabel.position = CGPoint(x: racePickedLabel.position.x, y: racePickedLabel.frame.minY - completedTutLabel.frame.size.height)
+            
+            _scene.addChild(board)
+            board.addChild(nameLabel)
+            board.addChild(dateOfBirthLabel)
+            board.addChild(racePickedLabel)
+            board.addChild(completedTutLabel)
+            
+            let resetButton = SKSpriteNode(color: UIColor.black, size: CGSize(width: 100, height: 50))
+            resetButton.name = resetUserDataButtonName
+            resetButton.position = CGPoint(x: nameLabel.frame.midX, y: nameLabel.frame.maxY + 50)
+            board.addChild(resetButton)
+                
+            
+            _isDisplayingData = true
+        }else if _isDisplayingData == true {
+            board.removeFromParent()
+            _isDisplayingData = false
         }
     }
     
