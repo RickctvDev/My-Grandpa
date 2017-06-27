@@ -4,6 +4,8 @@
 //
 //  Created by Rick Crane on 26/04/2017.
 //  Copyright © 2017 Rick Crane. All rights reserved.
+
+//NEED TO START WORKING ON THE MAIN ROOM AND THE FUNCTIONALITY
 //
 
 import GameplayKit
