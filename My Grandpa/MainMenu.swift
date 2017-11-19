@@ -275,10 +275,18 @@ class MainMenu: SKScene, UITextFieldDelegate {
             
             let waitTimer = SKAction.wait(forDuration: 3.7)
             grandpa.continueButtonPressed()
-            house.openAndCloseHouse(waitForDuration: 1.8)
-            self.run(waitTimer) {
-                let sceneToGoTo = LivingRoomScene(size: UIScreen.main.bounds.size)
-                prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5, audioPlayer: nil)
+            
+            if grandpaIsSleeping{
+                self.run(SKAction.wait(forDuration: 1)) {
+                    let sceneToGoTo = LivingRoomScene(size: UIScreen.main.bounds.size)
+                    prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5, audioPlayer: nil)
+                }
+            }else{
+                house.openAndCloseHouse(waitForDuration: 1.8)
+                self.run(waitTimer) {
+                    let sceneToGoTo = LivingRoomScene(size: UIScreen.main.bounds.size)
+                    prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5, audioPlayer: nil)
+                }
             }
         }else if nodePressed.name == createNewGrandpaButtonName {
             house.openAndCloseHouse(waitForDuration: 0.3)

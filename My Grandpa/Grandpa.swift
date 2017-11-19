@@ -17,6 +17,7 @@ class Grandpa : SpriteCreator{
     private let _anchorPoint = CGPoint(x: 0.5, y: 0)
     private let _name : String?
     private let usersData = UsersData()
+    private var userCompletedTut = false
     
     override init(scene: SKScene, texture: String, zPosition: CGFloat, anchorPoints: CGPoint?, name: String?) {
         
@@ -100,6 +101,7 @@ class Grandpa : SpriteCreator{
     }
     
     func userCompletedTutorial(){
+        userCompletedTut = true
         let foundHouse = _scene.childNode(withName: houseName) as! House
         foundHouse.openAndCloseHouse(waitForDuration: 1.6)
         continueButtonPressed()
@@ -138,32 +140,39 @@ class Grandpa : SpriteCreator{
     
     func continueButtonPressed(){
         
-        let timer : Double = 2
-        
-        let rotateActionLeft = SKAction.rotate(byAngle: 0.05, duration: 0.15)
-        let roateActionRight = rotateActionLeft.reversed()
-        let rotateActionComplete = SKAction.sequence([rotateActionLeft,roateActionRight, roateActionRight, rotateActionLeft])
-        let runActionForever = SKAction.repeatForever(rotateActionComplete)
-        self.run(runActionForever)
-        
-        let finalPos = CGPoint(x: _scene.frame.minX + self.frame.size.width / 1.5, y: _scene.frame.minY + self.frame.height / 3.5)
-        let finalScale = SKAction.scale(to: 0.05, duration: timer)
-        let charcterMoveToPos = SKAction.move(to: finalPos, duration: timer)
-        let moveLeftOffScreen = SKAction.moveBy(x: -50, y: 0, duration: 0.5)
-        
-        self.run(charcterMoveToPos, completion: {
-            self.zPosition = 3
+        if grandpaIsSleeping == true && userCompletedTut == false{
             
-            let wait = SKAction.wait(forDuration: 0.5)
-            self.run(wait)
-            self.run(moveLeftOffScreen)
-            self.run(wait, completion: {
-                self.removeFromParent()
+            self.isHidden = true
+            scene?.run(SKAction.fadeOut(withDuration: 0.5))
+            
+        }else {
+            let timer : Double = 2
+            
+            let rotateActionLeft = SKAction.rotate(byAngle: 0.05, duration: 0.15)
+            let roateActionRight = rotateActionLeft.reversed()
+            let rotateActionComplete = SKAction.sequence([rotateActionLeft,roateActionRight, roateActionRight, rotateActionLeft])
+            let runActionForever = SKAction.repeatForever(rotateActionComplete)
+            self.run(runActionForever)
+            
+            let finalPos = CGPoint(x: _scene.frame.minX + self.frame.size.width / 1.5, y: _scene.frame.minY + self.frame.height / 3.5)
+            let finalScale = SKAction.scale(to: 0.05, duration: timer)
+            let charcterMoveToPos = SKAction.move(to: finalPos, duration: timer)
+            let moveLeftOffScreen = SKAction.moveBy(x: -50, y: 0, duration: 0.5)
+            
+            self.run(charcterMoveToPos, completion: {
+                self.zPosition = 3
+                
+                let wait = SKAction.wait(forDuration: 0.5)
+                self.run(wait)
+                self.run(moveLeftOffScreen)
+                self.run(wait, completion: {
+                    self.removeFromParent()
+                })
             })
-        })
-        self.run(finalScale)
+            self.run(finalScale)
+        }
     }
-    
+        
     private func makeGranpaShake(){
         let grandadGoLeft = SKAction.moveBy(x: -2, y: 0, duration: 0.03)
         let grandadGoRight = SKAction.moveBy(x: 2, y: 0, duration: 0.03)
@@ -174,5 +183,4 @@ class Grandpa : SpriteCreator{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

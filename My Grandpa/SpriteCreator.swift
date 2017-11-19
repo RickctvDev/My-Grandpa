@@ -51,6 +51,33 @@ class SpriteCreator: SKSpriteNode {
         }
     }
     
+    init(scene : SKScene, withColor : UIColor, size: CGSize, zPosition : CGFloat, anchorPoints : CGPoint?, name : String?) {
+        super.init(texture: nil, color: withColor, size: size)
+   
+        if anchorPoints == nil {
+            self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        }else{
+            self.anchorPoint = anchorPoints!
+        }
+        self.zPosition = zPosition
+
+        if name == nil {
+            self.name = "texture"
+        }else{
+            self.name = name
+        }
+    }
+    
+    init(scene : SKScene, name : String?, texture: SKTexture?, withSize: CGSize) {
+        super.init(texture: nil, color: UIColor.clear, size: withSize)
+        
+        if name == nil {
+            self.name = "texture"
+        }else{
+            self.name = name
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

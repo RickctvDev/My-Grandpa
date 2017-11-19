@@ -11,11 +11,11 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    
+        
     private var loaded : Bool = false
+    private var sceneIntNumber = 0
     
     override func viewDidLayoutSubviews() {
-        
         //this is where we know if a user has saved data, seems to load up on every scene though
         if UserDefaults.standard.bool(forKey: userHasCompletedTutorial) == true {
             userHasSavedGameFile = true
@@ -32,11 +32,13 @@ class GameViewController: UIViewController {
             if let view = self.view as! SKView? {
                 
                 //PUT SCENE YOU WANT TO DEBUG HERE
-                let scene : LoadingScreen!
-                scene = LoadingScreen(size: UIScreen.main.bounds.size)
+                let scene : BedroomScene!
+                scene = BedroomScene(size: UIScreen.main.bounds.size)
                 //scene.scaleMode = .aspectFit
                 scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 scene.viewController = self
+                
+                sceneWeAreON = scene
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -87,6 +89,61 @@ class GameViewController: UIViewController {
             print("************** DEBUG MODE IS SET TO FALSE *******************")
             print("************* OK FOR SUBMITTING THE APP ***********")
             print("")
+        }
+    }
+    
+    @IBAction func rightSwipe(_ sender: Any) {
+   
+        let currentSceneName = sceneWeAreON?.name
+
+        var arrayCounter = 0
+        for name in layoutOfHouseArray {
+            
+            if name == currentSceneName {
+                sceneIntNumber = arrayCounter + 1
+            }else{
+                arrayCounter += 1
+            }
+        }
+        sceneChangeSwitcher()
+    }
+    
+    @IBAction func leftSwipe(_ sender: Any) {
+        let currentSceneName = sceneWeAreON?.name
+        
+        var arrayCounter = 0
+        for name in layoutOfHouseArray {
+            
+            if name == currentSceneName {
+                print(name)
+                print(arrayCounter)
+                
+                if arrayCounter == 0 {
+                    
+                }else{
+                    arrayCounter -= 1
+                    sceneIntNumber = arrayCounter - 1
+                }
+            }
+        }
+        sceneChangeSwitcher()
+    }
+    
+    func sceneChangeSwitcher(){
+        let sceneToGoTo: SKScene!
+        
+        switch sceneIntNumber {
+        case 0:
+            sceneToGoTo = BedroomScene(size: UIScreen.main.bounds.size)
+            prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: sceneWeAreON!, fadeWithDuration: 0.5, audioPlayer: nil)
+        case 1:
+            sceneToGoTo = LivingRoomScene(size: UIScreen.main.bounds.size)
+            prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: sceneWeAreON!, fadeWithDuration: 0.5, audioPlayer: nil)
+        case 2:
+            sceneToGoTo = BathroomScene(size: UIScreen.main.bounds.size)
+            prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: sceneWeAreON!, fadeWithDuration: 0.5, audioPlayer: nil)
+        default:
+            print("No Scenes Need to be changed currently from Swipe Gesture")
         }
     }
 }

@@ -42,6 +42,8 @@ var soundIsOn = true
 var otherSoundIsOn = true
 var notificationsSwitchedOn = true
 var loadedTextField = false
+var sceneWeAreON : SKScene?
+let layoutOfHouseArray = ["Bedroom", "Living Room", "Bathroom"]
 
 //Game Sprite Names -> Used for testing touches
 let houseName = "house"
@@ -106,6 +108,7 @@ func prepareForNewScene(sceneToPresent : SKScene, currentScene : SKScene, fadeWi
     sceneToPresent.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     let reveal = SKTransition.fade(withDuration: fadeWithDuration)
     currentScene.view?.presentScene(sceneToPresent, transition: reveal)
+    sceneWeAreON = sceneToPresent
 }
 
 func randomPointsBetweenWithFloat(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{

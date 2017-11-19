@@ -29,8 +29,7 @@ class LivingRoom {
             return _floor.texture!
         }
         set{
-            //_floor.texture = newValue
-            
+            _floor.texture = newValue
             print("recieved \(newValue)")
         }
     }
@@ -87,10 +86,6 @@ class LivingRoom {
         set{
             _door.fillTexture = newValue
         }
-    }
-    
-    init(){
-        
     }
     
     private func loadTexturesForHouse(){

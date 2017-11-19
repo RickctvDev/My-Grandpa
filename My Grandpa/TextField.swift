@@ -20,7 +20,7 @@ class TextField: UITextField {
         self.borderStyle = UITextBorderStyle.roundedRect
         self.keyboardType = UIKeyboardType.asciiCapable
         self.textAlignment = .center
-        self.attributedPlaceholder = NSAttributedString(string: "Ex. Cedric", attributes: [NSForegroundColorAttributeName : UIColor.gray])
+        self.attributedPlaceholder = NSAttributedString(string: "Ex. Cedric", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray])
         self.autocapitalizationType = UITextAutocapitalizationType.words
         self.returnKeyType = UIReturnKeyType.done
         self.autocorrectionType = UITextAutocorrectionType.no
