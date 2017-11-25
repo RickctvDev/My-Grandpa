@@ -27,7 +27,7 @@ class Ground : SpriteCreator{
         
         super.init(scene: _scene, texture: _texture, zPosition: _zPosition, anchorPoints: _anchorPoint, name : _name)
         
-        self.size = CGSize(width: scene.frame.size.width, height: 50)
+        self.size = CGSize(width: scene.frame.size.width + 50, height: 50)
         self.position = CGPoint(x: scene.frame.midX, y: scene.frame.minY)
         
         if itIsDayTime == false {

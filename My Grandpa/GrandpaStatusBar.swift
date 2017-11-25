@@ -143,6 +143,10 @@ class GrandpaStatusBar : SKSpriteNode{
         
     }
     
+    func grabValuesForStamina(){
+        
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7307E15B1EC4D28A00A2F90D /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15A1EC4D28A00A2F90D /* Billboard.swift */; };
 		7307E15D1EC4E5E400A2F90D /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15C1EC4E5E400A2F90D /* Credits.swift */; };
-		7309193A1ED3502C00807125 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730919391ED3502C00807125 /* UserData.swift */; };
+		7309193A1ED3502C00807125 /* UsersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730919391ED3502C00807125 /* UsersData.swift */; };
 		730BB2F01EAFFFE000F36A31 /* LivingRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2EF1EAFFFE000F36A31 /* LivingRoom.swift */; };
 		730BB2F21EB0004B00F36A31 /* LivingRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2F11EB0004B00F36A31 /* LivingRoomScene.swift */; };
 		730BB2F41EB00ABB00F36A31 /* AudioMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BB2F31EB00ABB00F36A31 /* AudioMaker.swift */; };
@@ -84,13 +84,14 @@
 		73A729F51F743C30009421C5 /* BathroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A729F41F743C30009421C5 /* BathroomScene.swift */; };
 		73A729F71F7830B5009421C5 /* GrandpaStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A729F61F7830B5009421C5 /* GrandpaStatusBar.swift */; };
 		73B7EC831EC38726006832D8 /* Grandpa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7EC821EC38726006832D8 /* Grandpa.swift */; };
+		73D1842E1FC99941004300AE /* SceneChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D1842D1FC99941004300AE /* SceneChanger.swift */; };
 		73FA55B51ECCBE32005368CE /* CreateNewCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7307E15A1EC4D28A00A2F90D /* Billboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
 		7307E15C1EC4E5E400A2F90D /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
-		730919391ED3502C00807125 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		730919391ED3502C00807125 /* UsersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersData.swift; sourceTree = "<group>"; };
 		730BB2EF1EAFFFE000F36A31 /* LivingRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingRoom.swift; sourceTree = "<group>"; };
 		730BB2F11EB0004B00F36A31 /* LivingRoomScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingRoomScene.swift; sourceTree = "<group>"; };
 		730BB2F31EB00ABB00F36A31 /* AudioMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioMaker.swift; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 		73A729F41F743C30009421C5 /* BathroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomScene.swift; sourceTree = "<group>"; };
 		73A729F61F7830B5009421C5 /* GrandpaStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandpaStatusBar.swift; sourceTree = "<group>"; };
 		73B7EC821EC38726006832D8 /* Grandpa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grandpa.swift; sourceTree = "<group>"; };
+		73D1842D1FC99941004300AE /* SceneChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneChanger.swift; sourceTree = "<group>"; };
 		73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewCharacter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,7 +276,8 @@
 		7321AAF41EAFC35C00CD8BA1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				730919391ED3502C00807125 /* UserData.swift */,
+				73D1842D1FC99941004300AE /* SceneChanger.swift */,
+				730919391ED3502C00807125 /* UsersData.swift */,
 				73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */,
 				7377A1121EC8DFBB00A74EF5 /* TextField.swift */,
 				7307E15C1EC4E5E400A2F90D /* Credits.swift */,
@@ -459,7 +462,7 @@
 				TargetAttributes = {
 					7321AAD41EAFC2E100CD8BA1 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 79N25RX82N;
+						DevelopmentTeam = T7TVQ3JXF6;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -548,6 +551,7 @@
 				73A729F31F743A89009421C5 /* Bathroom.swift in Sources */,
 				7326FA061EB7A08100303575 /* Cloud.swift in Sources */,
 				7307E15B1EC4D28A00A2F90D /* Billboard.swift in Sources */,
+				73D1842E1FC99941004300AE /* SceneChanger.swift in Sources */,
 				7326FA0B1EB7B86B00303575 /* Sun.swift in Sources */,
 				73A729F71F7830B5009421C5 /* GrandpaStatusBar.swift in Sources */,
 				7321AADF1EAFC2E100CD8BA1 /* LoadingScreen.swift in Sources */,
@@ -569,7 +573,7 @@
 				7326FA081EB7A8EE00303575 /* Updatable.swift in Sources */,
 				7336F7921F7934A6008F2153 /* BedroomScene.swift in Sources */,
 				7321AB4E1EAFD39E00CD8BA1 /* WifiConnectionChecker.swift in Sources */,
-				7309193A1ED3502C00807125 /* UserData.swift in Sources */,
+				7309193A1ED3502C00807125 /* UsersData.swift in Sources */,
 				7321AAD91EAFC2E100CD8BA1 /* AppDelegate.swift in Sources */,
 				7321AB501EAFE61400CD8BA1 /* GameManager.swift in Sources */,
 				7326FA0D1EB7BA7A00303575 /* House.swift in Sources */,
@@ -714,11 +718,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79N25RX82N;
+				DEVELOPMENT_TEAM = T7TVQ3JXF6;
 				INFOPLIST_FILE = "My Grandpa/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.screamjunkies.My-Grandpa";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.screamjunkiesdevelopment.My-Grandpa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -733,11 +737,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79N25RX82N;
+				DEVELOPMENT_TEAM = T7TVQ3JXF6;
 				INFOPLIST_FILE = "My Grandpa/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.screamjunkies.My-Grandpa";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.screamjunkiesdevelopment.My-Grandpa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;

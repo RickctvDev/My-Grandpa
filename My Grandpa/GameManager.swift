@@ -42,8 +42,14 @@ var soundIsOn = true
 var otherSoundIsOn = true
 var notificationsSwitchedOn = true
 var loadedTextField = false
+var movedFromAnotherScene = false
+var movedToSceneFromLeftArrowTouched = false
 var sceneWeAreON : SKScene?
-let layoutOfHouseArray = ["Bedroom", "Living Room", "Bathroom"]
+let layoutOfHouseArray = ["Bedroom", "LivingRoom", "Bathroom"]
+let livingRoomName = "LivingRoom"
+let bedroomName = "Bedroom"
+let bathroomName = "Bathroom"
+
 
 //Game Sprite Names -> Used for testing touches
 let houseName = "house"
@@ -86,6 +92,8 @@ let dayCalenderLabelName = "dayCalLabel"
 let monthCalenderLabelName = "monthCalLabel"
 let crossButtonName = "cross"
 let resetUserDataButtonName = "resetUserDataButton"
+let sceneChangeArrowRightName = "sceneChangeRight"
+let sceneChangeArrowLeftName = "sceneChangeLeft"
 
 //USEFUL FUNCTIONS AND VARIBLES
 var _menuButtonsArray = [MenuButton]()

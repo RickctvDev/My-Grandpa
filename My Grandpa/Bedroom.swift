@@ -73,7 +73,7 @@ class Bedroom {
         cgPathLeftInGoingWall.closeSubpath()
         
         _leftWall = SKShapeNode(path: cgPathLeftInGoingWall)
-        _leftWall.zPosition = 500
+        _leftWall.zPosition = 4
         _leftWall.strokeColor = skirtingBoardColor // is the skirtingboard color
         _leftWall.lineWidth = skirtingBoardSize
         _leftWall.fillColor = #colorLiteral(red: 0.4840993881, green: 0.6911504865, blue: 0.8696178794, alpha: 1)

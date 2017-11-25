@@ -79,7 +79,7 @@ class MainMenu: SKScene, UITextFieldDelegate {
     //THIS IS BECOMING AN ISSUE
     func makeTextField(){
         self.textInput = TextField(frame: CGRect(x: UIScreen.main.bounds.size.width / 2 + 95,
-                                y: UIScreen.main.bounds.size.height / 2 - 70,
+                                y: UIScreen.main.bounds.size.height / 2 - 50,
                                 width: 150,
                                 height: 30))
         self.textInput.delegate = self
@@ -199,7 +199,7 @@ class MainMenu: SKScene, UITextFieldDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             let node     = atPoint(location)
-                    
+            
             //If a menu button was selected
             for button in _menuButtonsArray{
                 if node.name == button.name!{
@@ -278,7 +278,7 @@ class MainMenu: SKScene, UITextFieldDelegate {
             
             if grandpaIsSleeping{
                 self.run(SKAction.wait(forDuration: 1)) {
-                    let sceneToGoTo = LivingRoomScene(size: UIScreen.main.bounds.size)
+                    let sceneToGoTo = BedroomScene(size: UIScreen.main.bounds.size)
                     prepareForNewScene(sceneToPresent: sceneToGoTo, currentScene: self, fadeWithDuration: 0.5, audioPlayer: nil)
                 }
             }else{
