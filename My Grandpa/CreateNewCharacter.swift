@@ -306,6 +306,7 @@ class CreateNewGrandpa {
             if let nameOfGrandpa = textFieldFromView.text?.capitalized {
                 userData.saveData(KeyName: nameChosen, dataToPass: nameOfGrandpa)
             }
+            userData.grabUsersCurrentSettingsData()
             
         }else if onStageNumber == 5 {
             userData.saveData(KeyName: userHasCompletedTutorial, dataToPass: true)

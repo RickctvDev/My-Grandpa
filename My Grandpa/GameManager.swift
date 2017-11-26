@@ -15,6 +15,7 @@ let gameFont = "IndieFlower"
 let gameTitleName = "My Grandpa"
 var userConnectedWithLoginCredentials = false // DEFAULT: false
 var userHasSavedGameFile = false // DEFAULT: false
+var firstTimeLaunchedGame = true
 
 //USER DATA SAVE NAMES
 let nameChosen = "nameChosen"
@@ -22,6 +23,14 @@ let dateOfBirthDay = "dateOfBirthDay"
 let dateOfBirthMonth = "dateOfBirthMonth"
 let racePicked = "racePicked"
 let userHasCompletedTutorial = "completedTutorial?"
+let users_Stamina_Amount = "users_stamina_amount"
+let users_Exp_Level = "users_exp_level"
+let users_Dollar_Amount = "users_dollar_amount"
+let user_Set_Music_Value = "user_set_music_off"
+let user_Set_Sound_Value = "user_set_sound_off"
+let user_Set_Notifications_Value = "user_set_notifications_off"
+var timerForAutoSave = Timer()
+
 
 //GRANDPAS RACES
 let grandpaRaces = ["White", "Black", "Asian", "Brown", "Latino"]
@@ -40,7 +49,7 @@ var grandpaIsSleeping = false
 var shouldResetNow = false //is used when the game goes into BG
 var soundIsOn = true
 var otherSoundIsOn = true
-var notificationsSwitchedOn = true
+var notificationsSwitchedOn = false
 var loadedTextField = false
 var movedFromAnotherScene = false
 var movedToSceneFromLeftArrowTouched = false
@@ -77,6 +86,7 @@ let notificationButtonName = "NotificationsButton"
 let cameraName = "camera"
 let raceNameLabelThatWillBeRemovedWithImagesLater = "raceLabel"
 let confirmButtonName = "confirmButton"
+let settingsMenuIconName = "settingsMenuIcon"
 let calendarImageName = "calendar"
 let rightArrowTextureName = "arrow"
 let leftArrowTextureName = "arrowLeft"
@@ -100,6 +110,8 @@ var _menuButtonsArray = [MenuButton]()
 
 //Make of size: UIScreen.main.bounds.size
 func prepareForNewScene(sceneToPresent : SKScene, currentScene : SKScene, fadeWithDuration : TimeInterval, audioPlayer : AudioMaker?){
+
+    timerForAutoSave.invalidate()
     
     if audioPlayer != nil {
         audioPlayer?.bgMusicFadeOut(withSeconds: fadeWithDuration - 0.8)

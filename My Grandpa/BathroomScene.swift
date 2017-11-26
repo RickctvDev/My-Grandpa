@@ -27,6 +27,7 @@ class BathroomScene: SKScene {
     
     private func initalSetup(){
         self.name = bathroomName
+        _ = WifiConnectionChecker(onScene: self)
         sceneWeAreON = self
         makeBathRoomLayout()
         createStatusBar()

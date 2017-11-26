@@ -22,6 +22,7 @@ class Grandpa : SpriteCreator{
     private var chosenRace = String()
     private var mainScreenScale : CGFloat = 0.03
     private var insideHouseScale : CGFloat = 0.14
+    private var audioMaker = AudioMaker()
     
     var nameChosenByUser : String{
         get{
@@ -129,9 +130,7 @@ class Grandpa : SpriteCreator{
         let random = Int(arc4random_uniform(UInt32(voiceArray.count)))
         let finalVoice = voiceArray[random]
         
-        let playSound = SKAction.playSoundFileNamed(fileName: finalVoice, atVolume: defaultSoundVolume, waitForCompletion: true)
-        self.run(playSound)
-        
+        audioMaker.playASound(scene: _scene, fileNamed: finalVoice, atVolume: defaultSoundVolume)
         makeGranpaShake()
         
     }
@@ -141,9 +140,16 @@ class Grandpa : SpriteCreator{
         let random = Int(arc4random_uniform(UInt32(voiceArray.count)))
         let finalVoice = voiceArray[random]
         
-        let playSound = SKAction.playSoundFileNamed(fileName: finalVoice, atVolume: defaultSoundVolume, waitForCompletion: true)
-        self.run(playSound)
+        audioMaker.playASound(scene: _scene, fileNamed: finalVoice, atVolume: defaultSoundVolume)
+        makeGranpaShake()
+    }
+    
+    func playYawnVoice(){
+        let voiceArray = ["pain1", "pain2", "pain3", "pain4"] // YAWN VOICES TO BE ADDED
+        let random = Int(arc4random_uniform(UInt32(voiceArray.count)))
+        let finalVoice = voiceArray[random]
         
+        audioMaker.playASound(scene: _scene, fileNamed: finalVoice, atVolume: defaultSoundVolume)
         makeGranpaShake()
     }
     

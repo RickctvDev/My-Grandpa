@@ -13,6 +13,8 @@ class GrandpaStatusBar : SKSpriteNode{
     
     private let _scene : SKScene!
     private let _name : String?
+    private let usersData = UsersData()
+    private let AUTO_SAVE_TIMER_IN_SECONDS : Double = 20
     
     let grandpaExpLevelLabel = SKLabelNode(fontNamed: gameFont)
     let dollarAmountValue = SKLabelNode(fontNamed: gameFont)
@@ -141,10 +143,44 @@ class GrandpaStatusBar : SKSpriteNode{
         staminaAmountValue.position = CGPoint(x: staminaAmountValue.position.x, y: -45)
         staminaNoteIcon.addChild(staminaAmountValue)
         
+        autoSaveFeature()
+        
     }
     
-    func grabValuesForStamina(){
-        
+    private func grabValuesForDollar(){
+        if let dataToGrab = usersData.getDataFromKey(Key: users_Dollar_Amount) as? String{
+            dollarAmountValue.text = dataToGrab
+        }
+    }
+    
+    private func grabValuesForStamina(){
+        if let dataToGrab = usersData.getDataFromKey(Key: users_Stamina_Amount) as? String{
+            staminaAmountValue.text = dataToGrab
+        }
+    }
+    
+    private func grabUserExperienceLevel(){
+        if let dataToGrab = usersData.getDataFromKey(Key: users_Exp_Level) as? String{
+            grandpaExpLevelLabel.text = dataToGrab
+        }
+    }
+    
+    func saveUsersProgress(){
+        usersData.saveData(KeyName: users_Exp_Level, dataToPass: grandpaExpLevelLabel.text as Any)
+        usersData.saveData(KeyName: users_Stamina_Amount, dataToPass: staminaAmountValue.text as Any)
+        usersData.saveData(KeyName: users_Dollar_Amount, dataToPass: dollarAmountValue.text as Any)
+    }
+    
+    private func autoSaveFeature(){
+        //Auto Save Feature
+        timerForAutoSave = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
+            if movedFromAnotherScene == true || shouldResetNow == true || self._scene.name == mainMenuName{
+                timer.invalidate()
+            }else{
+                self.saveUsersProgress()
+                print("SAVED USERS STATUS BAR PROGRESS")
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

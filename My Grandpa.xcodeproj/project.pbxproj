@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7304AF821FCAF451004E2AE0 /* Settings Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304AF811FCAF451004E2AE0 /* Settings Menu.swift */; };
 		7307E15B1EC4D28A00A2F90D /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15A1EC4D28A00A2F90D /* Billboard.swift */; };
 		7307E15D1EC4E5E400A2F90D /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7307E15C1EC4E5E400A2F90D /* Credits.swift */; };
 		7309193A1ED3502C00807125 /* UsersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730919391ED3502C00807125 /* UsersData.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7304AF811FCAF451004E2AE0 /* Settings Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Menu.swift"; sourceTree = "<group>"; };
 		7307E15A1EC4D28A00A2F90D /* Billboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
 		7307E15C1EC4E5E400A2F90D /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		730919391ED3502C00807125 /* UsersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersData.swift; sourceTree = "<group>"; };
@@ -278,14 +280,15 @@
 			children = (
 				73D1842D1FC99941004300AE /* SceneChanger.swift */,
 				730919391ED3502C00807125 /* UsersData.swift */,
+				73A729F61F7830B5009421C5 /* GrandpaStatusBar.swift */,
+				7304AF811FCAF451004E2AE0 /* Settings Menu.swift */,
+				7307E15A1EC4D28A00A2F90D /* Billboard.swift */,
 				73FA55B41ECCBE32005368CE /* CreateNewCharacter.swift */,
 				7377A1121EC8DFBB00A74EF5 /* TextField.swift */,
 				7307E15C1EC4E5E400A2F90D /* Credits.swift */,
 				7385FE3B1EB7EF4F00CDA942 /* Camera.swift */,
-				7307E15A1EC4D28A00A2F90D /* Billboard.swift */,
 				7385FE391EB7EA0A00CDA942 /* StartButton.swift */,
 				73B7EC821EC38726006832D8 /* Grandpa.swift */,
-				73A729F61F7830B5009421C5 /* GrandpaStatusBar.swift */,
 				7385FE331EB7C4DB00CDA942 /* Ground.swift */,
 				7326FA0E1EB7C0E800303575 /* Moon.swift */,
 				7326FA101EB7C22600303575 /* Star.swift */,
@@ -573,6 +576,7 @@
 				7326FA081EB7A8EE00303575 /* Updatable.swift in Sources */,
 				7336F7921F7934A6008F2153 /* BedroomScene.swift in Sources */,
 				7321AB4E1EAFD39E00CD8BA1 /* WifiConnectionChecker.swift in Sources */,
+				7304AF821FCAF451004E2AE0 /* Settings Menu.swift in Sources */,
 				7309193A1ED3502C00807125 /* UsersData.swift in Sources */,
 				7321AAD91EAFC2E100CD8BA1 /* AppDelegate.swift in Sources */,
 				7321AB501EAFE61400CD8BA1 /* GameManager.swift in Sources */,

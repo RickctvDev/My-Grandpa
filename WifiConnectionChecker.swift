@@ -13,10 +13,17 @@ class WifiConnectionChecker {
     private var wifiImage : SKSpriteNode!
     private var isDisplayingWifiImage = false
     private var wifiDown = false
+    var backgroundToStopPlay = SKSpriteNode()
     
     init(onScene : SKScene) {
         if debugMode == false {
             checkInternetConnetionForever(scene: onScene)
+            backgroundToStopPlay = SKSpriteNode(color: UIColor.black, size: CGSize(width: onScene.frame.size.width,
+                                                                                   height: onScene.frame.size.height))
+            backgroundToStopPlay.alpha = 0.65
+            backgroundToStopPlay.isHidden = true
+            backgroundToStopPlay.zPosition = 1000000000000 - 1
+            onScene.addChild(backgroundToStopPlay)
         }
     }
     
@@ -75,11 +82,15 @@ class WifiConnectionChecker {
             //They HAVE internet connection
             print("User Internet Connection Stable")
             displayWifiConnetionMessageOFF()
+            backgroundToStopPlay.isHidden = true
+            
+            
             return true
         }else{
             //They DO NOT have internet connection
             print("User Has Lost Internet Connection")
             displayWifiConnetionMessageON(scene: scene)
+            backgroundToStopPlay.isHidden = false
             return false
         }
     }
@@ -106,7 +117,7 @@ class WifiConnectionChecker {
     
     func positionSprite(scene : SKScene){
         
-        self.wifiImage.zPosition = 100
+        self.wifiImage.zPosition = 1000000000000
         self.wifiImage.xScale = 0.2
         self.wifiImage.yScale = self.wifiImage.xScale
         self.wifiImage.position = CGPoint(x: scene.frame.maxX - self.wifiImage.frame.size.width + 15,

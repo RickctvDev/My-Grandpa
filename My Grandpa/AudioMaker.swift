@@ -17,7 +17,7 @@ class AudioMaker{
     init(){
     }
     
-    func playBGMusic(){
+    private func playBGMusic(){
         
         if soundIsOn == true {
             //https://youtu.be/gV9ts8IFMPQ This is the music for this game - we have to give credit
@@ -33,23 +33,30 @@ class AudioMaker{
             }
                 
         }else{
-            print("Sound is set to false")
+            do{
+                bgAudioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "bgMusic", ofType: "mp3")!))
+                bgAudioPlayer.prepareToPlay()
+                bgAudioPlayer.volume = 0.1
+                bgAudioPlayer.numberOfLoops = -1
+            }
+            catch{
+                print(error)
+            }
         }
     }
     
     func turnMusicOffOrOn(){
-        if bgAudioPlayer.isPlaying{
-            bgAudioPlayer.stop()
-        }else{
-            bgAudioPlayer.play()
-        }
+        playBGMusic()
     }
     
     func bgMusicFadeOut(withSeconds : TimeInterval){
-        bgAudioPlayer.setVolume(0, fadeDuration: withSeconds)
         
-        _ = Timer.scheduledTimer(withTimeInterval: withSeconds, repeats: false) { (timer) in
-            self.bgAudioPlayer.stop()
+        if soundIsOn == true{
+            bgAudioPlayer.setVolume(0, fadeDuration: withSeconds)
+            
+            _ = Timer.scheduledTimer(withTimeInterval: withSeconds, repeats: false) { (timer) in
+                self.bgAudioPlayer.stop()
+            }
         }
     }
     

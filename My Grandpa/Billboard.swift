@@ -16,6 +16,7 @@ class Billboard : SpriteCreator {
     private let _zPosition : CGFloat!
     private let _anchorPoints : CGPoint?
     private let _name : String?
+    private let usersData = UsersData()
     
     private var soundButton : SKSpriteNode!
     private var musicButton : SKSpriteNode!
@@ -63,6 +64,8 @@ class Billboard : SpriteCreator {
     
     private func makeSettingsBillBoard(scene : SKScene){
         print("Made -> SETTINGS")
+        
+        usersData.grabUsersCurrentSettingsData()
         
         if soundIsOn {
             self.musicButton = SKSpriteNode(imageNamed: "soundOn")
@@ -162,9 +165,10 @@ class Billboard : SpriteCreator {
         }else{
             soundIsOn = true
             musicButton.texture = SKTexture(imageNamed: "soundOn")
-            
             print("MAIN SOUND IS ON")
         }
+        
+        usersData.saveData(KeyName: user_Set_Music_Value, dataToPass: soundIsOn)
     }
     
     func turnOnOffButtonSounds(){
@@ -177,6 +181,8 @@ class Billboard : SpriteCreator {
             soundButton.texture = SKTexture(imageNamed: "soundOn")
             print("OTHER SOUND IS ON")
         }
+        
+        usersData.saveData(KeyName: user_Set_Sound_Value, dataToPass: otherSoundIsOn)
     }
     
     func turnOnOffNotifications(){
@@ -189,6 +195,8 @@ class Billboard : SpriteCreator {
             notificationButton.texture = SKTexture(imageNamed: "notsOn")
             print("NOTS ARE ON")
         }
+        
+        usersData.saveData(KeyName: user_Set_Notifications_Value, dataToPass: notificationsSwitchedOn)
     }
     
     func removeBillBoard(){

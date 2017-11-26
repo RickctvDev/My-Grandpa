@@ -19,6 +19,7 @@ class MainMenu: SKScene, UITextFieldDelegate {
     private var cam         : Camera!
     private var textInput   : TextField!
     private var debugMode   : DebugMenu!
+    private var usersData = UsersData()
     
     //NEED THIS TO REMOVE FROM APPDELEGATE
     var viewController: GameViewController!
@@ -34,7 +35,7 @@ class MainMenu: SKScene, UITextFieldDelegate {
     
     override func didMove(to view: SKView) {
         let _ : WifiConnectionChecker = WifiConnectionChecker(onScene: self)
-        audioPlayer.playBGMusic()
+        audioPlayer.turnMusicOffOrOn()
         createMainMenu()
         createGrandpa()
     }
@@ -178,6 +179,23 @@ class MainMenu: SKScene, UITextFieldDelegate {
     
     func makeClouds(){
         //Create Clouds
+        let maxXPos = self.frame.maxX
+        let minXPos = self.frame.minX
+        let maxYPos = self.frame.maxY
+        let minYPos = self.frame.midY
+        
+        for _ in 1...6 {
+            
+            let cloudToMake = Cloud(scene: self, texture: "cloud", zPosition: 3, anchorPoints: nil, name: cloudName)
+            
+            let finalXPos = randomPointsBetweenWithFloat(firstNum: minXPos, secondNum: maxXPos)
+            let finalYPos = randomPointsBetweenWithFloat(firstNum: minYPos, secondNum: maxYPos)
+            cloudToMake.position = CGPoint(x: finalXPos, y: finalYPos)
+            
+            self.updatables.append(cloudToMake)
+            self.addChild(cloudToMake)
+        }
+        
         var cloudCounter = 0
         let maxClouds    = 10
         _ = Timer.scheduledTimer(withTimeInterval: randomBetweenNumbersDouble(firstNum: 5, secondNum: 9), repeats: true) { (timer) in
@@ -309,7 +327,8 @@ class MainMenu: SKScene, UITextFieldDelegate {
         debugMode.alpha = 1 
     }
     
-    override func update(_ currentTime: TimeInterval) {        
+    override func update(_ currentTime: TimeInterval) {
+        
         updatables.forEach { $0.update(currentTime: currentTime) }
         if shouldResetNow == true {
             shouldResetNow  = false

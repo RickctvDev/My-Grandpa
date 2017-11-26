@@ -17,6 +17,7 @@ class LivingRoomScene: SKScene {
     private var statsBar : GrandpaStatusBar!
     private var scenceChangeArrows : SceneChanger!
     private var grandpa         : Grandpa!
+    private var settingsMenu : SettingsMenu!
     
     //NEED THIS TO REMOVE FROM APPDELEGATE
     var viewController: GameViewController!
@@ -34,10 +35,17 @@ class LivingRoomScene: SKScene {
     private func initalSetup(){
         self.name = livingRoomName
         sceneWeAreON = self
+        _ = WifiConnectionChecker(onScene: self)
         //self.scaleMode = .resizeFill
         makeLivingRoomLayout()
         createStatusBar()
         createSceneChangeArrows()
+        settingsMenuSetup()
+    }
+    
+    private func settingsMenuSetup(){
+        settingsMenu = SettingsMenu(scene: self, texture: settingsMenuIconName, zPosition: 50004, anchorPoints: nil, name: settingsMenuIconName)
+        self.addChild(settingsMenu)
     }
     
     func createGrandpa(){
@@ -106,6 +114,16 @@ class LivingRoomScene: SKScene {
                scenceChangeArrows.leftArrowTapped(moveWithDuration: 1.5)
             }else if node.name == grandpa.name {
                 grandpa.playPainVoice()
+            }else if node.name == settingsMenuIconName {
+                settingsMenu.tappedForOpen()
+            }else if node.name == closeButtonName {
+                settingsMenu.closeMenu()
+            }else if node.name == musicButtonName {
+                settingsMenu.turnOnOffMainMusic()
+            }else if node.name == soundButtonName {
+                settingsMenu.turnOnOffButtonSounds()
+            }else if node.name == notificationButtonName {
+                settingsMenu.turnOnOffNotifications()
             }
         }
     }

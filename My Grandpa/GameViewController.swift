@@ -20,6 +20,9 @@ class GameViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: userHasCompletedTutorial) == true {
             userHasSavedGameFile = true
             print("Has Saved Info")
+            firstTimeLaunchedGame = false
+            setupUsersDeafultsForSettings()
+            
         }else{
             print("User has nothing saved")
             userHasSavedGameFile = false
@@ -43,13 +46,20 @@ class GameViewController: UIViewController {
                 view.presentScene(scene)
                 
                 view.ignoresSiblingOrder = true
-                view.showsFPS = true
-                view.showsNodeCount = true
-                //view.showsPhysics = true
                 
+                if debugMode == true{
+                    view.showsFPS = true
+                    view.showsNodeCount = true
+                    //view.showsPhysics = true
+                }
                 loaded = true
             }
         }
+    }
+    
+    func setupUsersDeafultsForSettings(){
+        let userSettingsFetcher = UsersData()
+        userSettingsFetcher.grabUsersCurrentSettingsData()
     }
 
     override func viewDidLoad() {

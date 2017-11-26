@@ -32,6 +32,7 @@ class BedroomScene: SKScene {
     
     private func initalSetup(){
         self.name = bedroomName
+        _ = WifiConnectionChecker(onScene: self)
         sceneWeAreON = self
         makeBedroomLayout()
         createStatusBar()
@@ -47,6 +48,7 @@ class BedroomScene: SKScene {
         
         if movedFromAnotherScene == false{
             //MAKE YAWN HERE
+            grandpa.playYawnVoice()
             grandpa.isHidden = false
         }else{
             
