@@ -22,6 +22,7 @@ class GameViewController: UIViewController {
             print("Has Saved Info")
             firstTimeLaunchedGame = false
             setupUsersDeafultsForSettings()
+        
             
         }else{
             print("User has nothing saved")
